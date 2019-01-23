@@ -7,6 +7,10 @@ public class Rol {
     private String nombre;
     private List<Permisos> permisos;
 
+    public Rol(int id) {
+        this.id = id;
+    }
+
     public Rol(int id, String nombre, List<Permisos> permisos) {
         this.id = id;
         this.nombre = nombre;

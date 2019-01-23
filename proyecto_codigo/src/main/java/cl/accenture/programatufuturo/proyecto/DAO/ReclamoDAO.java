@@ -28,17 +28,19 @@ public class ReclamoDAO {
         try {
 
             PreparedStatement pstatementInsert = conexion.getConexion().prepareStatement(
-                    "INSERT INTO Reclamo (id, titulo, descripcion, fecha, region, tipoReclamo_Id, usuario_Id, estado_idEstado)"
-                            + "VALUES (?,?,?,?,?,?,?,?)");
+                    "INSERT INTO reclamo (id,titulo, descripcion, fecha, region, tipoReclamo_Id, usuario_Id, estado_idEstado)"
+                            + "VALUES (?,?,?,?,?,?,?)");
 
-            pstatementInsert.setInt(1,a.getId());
+
+            pstatementInsert.setLong(1,new java.util.Date().getTime());
             pstatementInsert.setString(2,a.getTitulo());
             pstatementInsert.setString(3,a.getDescripcion());
-            pstatementInsert.setDate(4, (Date) a.getFecha());
+            pstatementInsert.setDate(4, new java.sql.Date(a.getFecha().getTime()));
             pstatementInsert.setString(5,a.getRegion());
             pstatementInsert.setInt(6, a.getTipo().getId());
             pstatementInsert.setInt(7,a.getUsuario().getId());
             pstatementInsert.setInt(8,a.getEstado().getId());
+            pstatementInsert.executeUpdate();
 
 
         } catch (SQLException e) {

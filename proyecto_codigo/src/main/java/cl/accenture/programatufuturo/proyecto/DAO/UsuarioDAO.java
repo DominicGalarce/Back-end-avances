@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class UsuarioDAO {
 
@@ -30,7 +31,7 @@ public class UsuarioDAO {
 
             // en mi SQL hago un INSERT TO, y VALUES, con signos de interrogacion en los valores de las columnas
             // y a continuación les dadamos el valor
-            final String SQL = "INSERT INTO Usuario(Id, Nombre, email, contraseña, ultimoLogin, fechaDeNacimiento, telefono, nacionalidad, rut, genero, Rol_Id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            final String SQL = "INSERT INTO proyecto.usuario(id, nombre, email, contraseña, ultimoLogin, fechaDeNacimiento, telefono, nacionalidad, rut, genero, rol_Id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement ps = conexion.getConexion().prepareStatement(SQL);
 
@@ -38,12 +39,14 @@ public class UsuarioDAO {
             // y un get de la respuesta recibida según corresponda
 
 
-            ps.setLong(1, new java.util.Date().getTime());
+
+
+            ps.setLong(1, 5);
             ps.setString(2,u.getNombre());
             ps.setString(3,u.getEmail());
             ps.setString(4,u.getContraseña());
-            ps.setDate(5,(Date) u.getUltimoLogin());
-            ps.setDate(6,(Date) u.getFechaNac());
+            ps.setDate(5, new java.sql.Date(u.getUltimoLogin().getTime()));
+            ps.setDate(6, new java.sql.Date(u.getFechaNac().getTime()));
             ps.setInt(7,u.getTelefono());
             ps.setString(8,u.getNacionalidad());
             ps.setString(9,u.getRut());
