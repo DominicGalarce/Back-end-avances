@@ -23,5 +23,14 @@ public class UsuarioController {
             e.printStackTrace();
         }
     }
+    @PostMapping ("/login")
+    public void Login(@RequestBody String usuario, String contraseña){
+        try{
+            UsuarioDAO dao= new UsuarioDAO(conexion);
+            dao.login(usuario, contraseña);
+        } catch (SinConexionException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

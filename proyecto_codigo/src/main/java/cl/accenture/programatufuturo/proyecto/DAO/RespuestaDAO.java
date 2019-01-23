@@ -33,7 +33,7 @@ public class RespuestaDAO {
 
             // ingresamos los valores con Set, segun el lugar del signo,
             // y un get de la respuesta recibida según corresponda
-            ps.setInt(1,x.getId());
+            ps.setLong(1, new java.util.Date().getTime());
             ps.setString(2,x.getComentario());
             ps.setDate(3, (Date) x.getFecha());
             ps.setInt(4,x.getReclamo().getId());

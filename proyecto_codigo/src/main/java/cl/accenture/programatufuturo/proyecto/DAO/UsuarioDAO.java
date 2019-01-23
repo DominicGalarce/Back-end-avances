@@ -38,7 +38,7 @@ public class UsuarioDAO {
             // y un get de la respuesta recibida según corresponda
 
 
-            ps.setInt(1,u.getId());
+            ps.setLong(1, new java.util.Date().getTime());
             ps.setString(2,u.getNombre());
             ps.setString(3,u.getEmail());
             ps.setString(4,u.getContraseña());
